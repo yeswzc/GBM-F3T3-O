@@ -1,6 +1,6 @@
-### One R code used to predict UMAP embeding for GBMs.
+### R code used to predict UMAP embeding for GBMs with FGFR3-TACC3 fusion.
 
-This code is used to test if tumor samples can embeded with recently identitified FGFR3-TACC3 fusion positive methylation outlier group
+This code is used to test if tumor samples can be embeded with recently identitified FGFR3-TACC3 fusion (F3T3) positive methylation outlier group (GBM-F3T3-O).
 
 ![result](R/result.jpg)
 
