@@ -6,24 +6,16 @@ library(minfi)
 library(IlluminaHumanMethylationEPICmanifest)
 library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
 
-
-
 subtype.col = RColorBrewer::brewer.pal(12, "Paired")[c(6,10,8, 2,4)]
 names(subtype.col) = c("NewCase", "GBM-F3T3-O", "Ganglioglioma", "GBM-G34", "GBM")
 
+###
 load("F3T3.umap.model.RDA")
      
-library(minfi)
-library(IlluminaHumanMethylationEPICmanifest)
-library(IlluminaHumanMethylationEPICanno.ilm10b4.hg19)
-
-
-#target <- read.csv("predF3T3O/205841320139/Sample_Sheet.csv", skip = 7)
-#RGset <- read.metharray.exp(targets = target,force=TRUE, verbose = T)
-#sampleNames(RGSet) <- targets$Name
+###
 
 RGset <- read.metharray("BL97/205841320139_R02C01")
-#detP <- detectionP(RGset)
+
 ###  
 if(ncol(RGset) > 1){
   GRset <- preprocessFunnorm(RGset)
@@ -34,8 +26,7 @@ if(ncol(RGset) > 1){
   betas <- getBeta(Mset); rm(Mset, RGset)
 }
 
-#methy.sd32k.probes <- readRDS("F3T3.methy.sd32k.probes.rds")
-#if( sum(!rownames(pc.rotation) %in% rownames(betas)) >0 ){
+
 if( sum(!rownames(betas.pca$rotation) %in% rownames(betas)) >0 ){
   stop("Error: some probes required not found: ", rownames(pc.rotation)[!rownames(pc.rotation) %in% rownames(betas)])
 }
